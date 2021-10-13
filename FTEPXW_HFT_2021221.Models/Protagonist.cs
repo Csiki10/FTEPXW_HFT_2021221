@@ -8,13 +8,17 @@ using System.Threading.Tasks;
 
 namespace FTEPXW_HFT_2021221.Models
 {
-    public class Director
+    class Protagonist
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int DirectorID { get; set; }
+        public int ProtagonistID { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
+        public string CharacterName { get; set; }
+        [Required]
+        public string Role { get; set; }
         [Required]
         public DateTime Birthday { get; set; }
         [Required]
@@ -25,14 +29,19 @@ namespace FTEPXW_HFT_2021221.Models
         public int Age { get; set; }
         [Required]
         public string Citizenship { get; set; }
+        [Required]
+        public bool Oscar { get; set; }
+
 
         [NotMapped]
         public virtual ICollection<Movie> Movies { get; set; }
 
-        public Director()
+        public Protagonist()
         {
             Movies = new HashSet<Movie>();
         }
+
+
 
     }
 }
