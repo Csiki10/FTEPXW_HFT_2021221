@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace FTEPXW_HFT_2021221.Models
 {
-    class Protagonist
+    public class Protagonist
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProtagonistID { get; set; }
+
         [Required]
         public string Name { get; set; }
         [Required]
@@ -32,6 +33,7 @@ namespace FTEPXW_HFT_2021221.Models
         [Required]
         public bool Oscar { get; set; }
 
+        // --------------------------------------
 
         [NotMapped]
         public virtual ICollection<Movie> Movies { get; set; }

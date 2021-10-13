@@ -13,6 +13,7 @@ namespace FTEPXW_HFT_2021221.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DirectorID { get; set; }
+
         [Required]
         public string Name { get; set; }
         [Required]
@@ -25,6 +26,8 @@ namespace FTEPXW_HFT_2021221.Models
         public int Age { get; set; }
         [Required]
         public string Citizenship { get; set; }
+
+        // --------------------------------------
 
         [NotMapped]
         public virtual ICollection<Movie> Movies { get; set; }
