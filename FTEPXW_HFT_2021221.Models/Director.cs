@@ -17,15 +17,11 @@ namespace FTEPXW_HFT_2021221.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public DateTime Birthday { get; set; }
-        [Required]
-        public string MaritalStatus { get; set; }
+        public DateTime Birthday { get; set; }       
         [Required]
         public string Gender { get; set; }
         [Required]
-        public int Age { get; set; }
-        [Required]
-        public string Citizenship { get; set; }
+        public int Age { get; set; }       
 
         // --------------------------------------
 

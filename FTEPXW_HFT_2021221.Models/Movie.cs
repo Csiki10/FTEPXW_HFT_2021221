@@ -15,9 +15,7 @@ namespace FTEPXW_HFT_2021221.Models
         public int MovieId { get; set; }
 
         [Required]
-        public string Name { get; set; }
-        [Required]
-        public DateTime ReleaseDate { get; set; }
+        public string Name { get; set; }      
         [Required]
         public string Music { get; set; }
         [Required]
@@ -25,13 +23,7 @@ namespace FTEPXW_HFT_2021221.Models
         [Required]
         public int Budget { get; set; }
         [Required]
-        public string Genre { get; set; }
-        [Required]
-        public string Distributed { get; set; }
-        [Required]
-        public string Country { get; set; }
-        [Required]
-        public string Language { get; set; }
+        public string Genre { get; set; }                   
         [Required]
         public int AgeLimit { get; set; }
         [Required]
@@ -42,14 +34,14 @@ namespace FTEPXW_HFT_2021221.Models
         [ForeignKey(nameof(Protagonist))]
         public int ProtagonistID { get; set; }
         [NotMapped]
-        public int Protagonist { get; set; }
+        public virtual Protagonist Protagonist { get; set; }
 
         // --------------------------------------
 
         [ForeignKey(nameof(Director))]
         public int DirectorID { get; set; }
         [NotMapped]
-        public int Director { get; set; }
+        public virtual Director Director { get; set; }
 
     }
 }
