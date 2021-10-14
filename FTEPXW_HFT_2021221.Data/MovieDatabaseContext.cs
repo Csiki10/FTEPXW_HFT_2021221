@@ -8,15 +8,17 @@ using System.Threading.Tasks;
 
 namespace FTEPXW_HFT_2021221.Data
 {
-    class MovieDatabaseContext : DbContext
+    public class MovieDatabaseContext : DbContext
     {
+        public virtual DbSet<Movie> Movies { get; set; }
         public virtual DbSet<Director> Directors { get; set; }
         public virtual DbSet<Protagonist> Protagonists { get; set; }
-        public virtual DbSet<Movie> Movies { get; set; }
-
+        
         public MovieDatabaseContext()
         {
+            
             this.Database.EnsureCreated();
+            
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -38,116 +40,16 @@ namespace FTEPXW_HFT_2021221.Data
                 .HasForeignKey(movie => movie.ProtagonistID)
                 .OnDelete(DeleteBehavior.Restrict);
             });
-
+            ;
             mb.Entity<Movie>(e =>
             {
                 e
                 .HasOne(movie => movie.Director)
-                .WithMany(director => director.Movies)
+                .WithMany(director => director.Movies2)
                 .HasForeignKey(movie => movie.DirectorID)
                 .OnDelete(DeleteBehavior.Restrict);
             });
-
-            Movie interstellar = new Movie()
-            {
-                MovieId = 1,
-                Name = "Interstellar",
-                Music = "Hans Zimmer",
-                RunningTime = 169,
-                Budget = 165000000,
-                Genre = "sci-fi",
-                AgeLimit = 12,
-                Income = 677463813
-            };
-            Movie inception = new Movie()
-            {
-                MovieId = 2,
-                Name = "Inception",
-                Music = "Hans Zimmer",
-                RunningTime = 148,
-                Budget = 160000000,
-                Genre = "drama",
-                AgeLimit = 16,
-                Income = 160500000
-            };
-            Movie dunkirk = new Movie()
-            {
-                MovieId = 3,
-                Name = "Dunkirk",
-                Music = "Hans Zimmer",
-                RunningTime = 106,
-                Budget = 100000000,
-                Genre = "war",
-                AgeLimit = 16,
-                Income = 526940665
-            };
-            Movie hangover = new Movie()
-            {
-                MovieId = 4,
-                Name = "Hangover",
-                Music = "Christophe Beck",
-                RunningTime = 100,
-                Budget = 35000000,
-                Genre = "comedy",
-                AgeLimit = 12,
-                Income = 467000000
-            };
-            Movie callmebyyourname = new Movie()
-            {
-                MovieId = 5,
-                Name = "Call me by your name",
-                Music = "Sufjan Stevens",
-                RunningTime = 132,
-                Budget = 3500000,
-                Genre = "drama",
-                AgeLimit = 16,
-                Income = 4190000
-            };
-            Movie gentlemen = new Movie()
-            {
-                MovieId = 6,
-                Name = "Gentlemen",
-                Music = "Guy Ritchie",
-                RunningTime = 113,
-                Budget = 22000000,
-                Genre = "action",
-                AgeLimit = 18,
-                Income = 115200000
-            };
-            Movie thegreatgatsby = new Movie()
-            {
-                MovieId = 7,
-                Name = "The Great Gatsby",
-                Music = "Baz Luhrmann",
-                RunningTime = 142,
-                Budget = 190000000,
-                Genre = "drama",
-                AgeLimit = 18,
-                Income = 353600000
-            };
-            Movie forrestgump = new Movie()
-            {
-                MovieId = 8,
-                Name = "Forrest Gump",
-                Music = "Alan Silvestri",
-                RunningTime = 142,
-                Budget = 55000000,
-                Genre = "drama",
-                AgeLimit = 12,
-                Income = 683100000
-            };
-            Movie dune = new Movie()
-            {
-                MovieId = 9,
-                Name = "Dune",
-                Music = "Hans Zimmer.",
-                RunningTime = 155,
-                Budget = 165000000,
-                Genre = "sci-fi",
-                AgeLimit = 16,
-                Income = 117600000
-            };
-
+            ;
             // ---------------------------------------
 
             Protagonist matthewmcconaughey = new Protagonist()
@@ -158,7 +60,7 @@ namespace FTEPXW_HFT_2021221.Data
                 Age = 51,
                 Gender = "man",
                 Oscar = true
-            };
+            };//2
             Protagonist leonardodicaprio = new Protagonist()
             {
                 ProtagonistID = 2,
@@ -167,7 +69,7 @@ namespace FTEPXW_HFT_2021221.Data
                 Age = 46,
                 Gender = "man",
                 Oscar = true
-            };
+            };//2
             Protagonist fionnwhitehead = new Protagonist()
             {
                 ProtagonistID = 3,
@@ -194,7 +96,7 @@ namespace FTEPXW_HFT_2021221.Data
                 Age = 25,
                 Gender = "man",
                 Oscar = false
-            };
+            };//2
             Protagonist tomhanks = new Protagonist()
             {
                 ProtagonistID = 6,
@@ -204,7 +106,7 @@ namespace FTEPXW_HFT_2021221.Data
                 Gender = "man",
                 Oscar = true
             };
-
+            ;
             // ---------------------------------------
 
             Director robertzemeckis = new Director()
@@ -212,7 +114,7 @@ namespace FTEPXW_HFT_2021221.Data
                 DirectorID = 1,
                 Name = "Robert Zemeckis",
                 Age = 69,
-                Gender = "man"         
+                Gender = "man"
             };
             Director christophernolan = new Director()
             {
@@ -220,7 +122,7 @@ namespace FTEPXW_HFT_2021221.Data
                 Name = "Christopher Nolan",
                 Age = 51,
                 Gender = "man"
-            };
+            };//3
             Director toddphillips = new Director()
             {
                 DirectorID = 3,
@@ -248,7 +150,7 @@ namespace FTEPXW_HFT_2021221.Data
                 Name = "Baz Luhrmann",
                 Age = 59,
                 Gender = "man"
-            };
+            };           
             Director denisvilleneuve = new Director()
             {
                 DirectorID = 7,
@@ -256,20 +158,139 @@ namespace FTEPXW_HFT_2021221.Data
                 Age = 54,
                 Gender = "man"
             };
+            ;
+            // ---------------------------------------
+
+            Movie interstellar = new Movie()
+            {
+                MovieID = 1,
+                Name = "Interstellar",
+                Music = "Hans Zimmer",
+                RunningTime = 169,
+                Budget = 165000000,
+                Genre = "sci-fi",
+                AgeLimit = 12,
+                Income = 677463813,
+                DirectorID = christophernolan.DirectorID,
+                ProtagonistID = matthewmcconaughey.ProtagonistID
+
+            };
+            Movie inception = new Movie()
+            {
+                MovieID = 2,
+                Name = "Inception",
+                Music = "Hans Zimmer",
+                RunningTime = 148,
+                Budget = 160000000,
+                Genre = "drama",
+                AgeLimit = 16,
+                Income = 160500000,
+                DirectorID = christophernolan.DirectorID,
+                ProtagonistID = leonardodicaprio.ProtagonistID
+                
+            };
+            Movie dunkirk = new Movie()
+            {
+                MovieID = 3,
+                Name = "Dunkirk",
+                Music = "Hans Zimmer",
+                RunningTime = 106,
+                Budget = 100000000,
+                Genre = "war",
+                AgeLimit = 16,
+                Income = 526940665,
+                DirectorID = christophernolan.DirectorID,
+                ProtagonistID = fionnwhitehead.ProtagonistID
+            };
+            Movie hangover = new Movie()
+            {
+                MovieID = 4,
+                Name = "Hangover",
+                Music = "Christophe Beck",
+                RunningTime = 100,
+                Budget = 35000000,
+                Genre = "comedy",
+                AgeLimit = 12,
+                Income = 467000000,
+                DirectorID = toddphillips.DirectorID,
+                ProtagonistID = bradleycharlescooper.ProtagonistID
+            };
+            Movie callmebyyourname = new Movie()
+            {
+                MovieID = 5,
+                Name = "Call me by your name",
+                Music = "Sufjan Stevens",
+                RunningTime = 132,
+                Budget = 3500000,
+                Genre = "drama",
+                AgeLimit = 16,
+                Income = 4190000,
+                DirectorID = lucaguadagnino.DirectorID,
+                ProtagonistID = timotheechalamet.ProtagonistID
+            };
+            Movie gentlemen = new Movie()
+            {
+                MovieID = 6,
+                Name = "Gentlemen",
+                Music = "Guy Ritchie",
+                RunningTime = 113,
+                Budget = 22000000,
+                Genre = "action",
+                AgeLimit = 18,
+                Income = 115200000,
+                DirectorID = guyritchie.DirectorID,
+                ProtagonistID = matthewmcconaughey.ProtagonistID
+            };
+            Movie thegreatgatsby = new Movie()
+            {
+                MovieID = 7,
+                Name = "The Great Gatsby",
+                Music = "Baz Luhrmann",
+                RunningTime = 142,
+                Budget = 190000000,
+                Genre = "drama",
+                AgeLimit = 18,
+                Income = 353600000,
+                DirectorID = bazluhrmann.DirectorID,
+                ProtagonistID = leonardodicaprio.ProtagonistID
+            };
+            Movie forrestgump = new Movie()
+            {
+                MovieID = 8,
+                Name = "Forrest Gump",
+                Music = "Alan Silvestri",
+                RunningTime = 142,
+                Budget = 55000000,
+                Genre = "drama",
+                AgeLimit = 12,
+                Income = 683100000,
+                DirectorID = robertzemeckis.DirectorID,
+                ProtagonistID = tomhanks.ProtagonistID
+            };
+            Movie dune = new Movie()
+            {
+                MovieID = 9,
+                Name = "Dune",
+                Music = "Hans Zimmer.",
+                RunningTime = 155,
+                Budget = 165000000,
+                Genre = "sci-fi",
+                AgeLimit = 16,
+                Income = 117600000,
+                DirectorID = denisvilleneuve.DirectorID,
+                ProtagonistID = timotheechalamet.ProtagonistID
+            };
 
             // ---------------------------------------
 
-            mb.Entity<Movie>().HasData(interstellar, inception, dunkirk,
-                hangover, callmebyyourname, gentlemen, thegreatgatsby,
-                forrestgump, dune);
+            mb.Entity<Director>().HasData(robertzemeckis, christophernolan, toddphillips, lucaguadagnino, guyritchie, bazluhrmann, denisvilleneuve);
 
-            mb.Entity<Protagonist>().HasData(matthewmcconaughey, leonardodicaprio,
-                fionnwhitehead, bradleycharlescooper, timotheechalamet,
-                tomhanks);
-
-            mb.Entity<Director>().HasData(robertzemeckis, christophernolan,
-                toddphillips, lucaguadagnino, guyritchie, guyritchie, bazluhrmann,
-                denisvilleneuve);
+            mb.Entity<Movie>().HasData(interstellar, inception, dunkirk, hangover, callmebyyourname, gentlemen, thegreatgatsby, forrestgump, dune);
+            
+            mb.Entity<Protagonist>().HasData(matthewmcconaughey, leonardodicaprio,fionnwhitehead, bradleycharlescooper, timotheechalamet,tomhanks);
+           
+            
+            ;
         }
 
 

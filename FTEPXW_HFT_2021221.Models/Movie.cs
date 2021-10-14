@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace FTEPXW_HFT_2021221.Models
 {
+    [Table("movies")]
     public class Movie
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]       
-        public int MovieId { get; set; }
+        public int MovieID { get; set; }
 
         [Required]
         public string Name { get; set; }      
@@ -37,11 +38,11 @@ namespace FTEPXW_HFT_2021221.Models
         public virtual Protagonist Protagonist { get; set; }
 
         // --------------------------------------
-
+        
         [ForeignKey(nameof(Director))]
         public int DirectorID { get; set; }
         [NotMapped]
         public virtual Director Director { get; set; }
-
+        
     }
 }
