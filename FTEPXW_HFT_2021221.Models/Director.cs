@@ -15,9 +15,7 @@ namespace FTEPXW_HFT_2021221.Models
         public int DirectorID { get; set; }
 
         [Required]
-        public string Name { get; set; }
-        [Required]
-        public DateTime Birthday { get; set; }       
+        public string Name { get; set; }             
         [Required]
         public string Gender { get; set; }
         [Required]
