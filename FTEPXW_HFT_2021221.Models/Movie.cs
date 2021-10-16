@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace FTEPXW_HFT_2021221.Models
 {
-    [Table("movies")]
     public class Movie
     {
         [Key]

@@ -45,7 +45,7 @@ namespace FTEPXW_HFT_2021221.Data
             {
                 e
                 .HasOne(movie => movie.Director)
-                .WithMany(director => director.Movies2)
+                .WithMany(director => director.Movies)
                 .HasForeignKey(movie => movie.DirectorID)
                 .OnDelete(DeleteBehavior.Restrict);
             });

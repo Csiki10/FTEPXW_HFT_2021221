@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace FTEPXW_HFT_2021221.Models
 {
-    [Table("protagonists")]
     public class Protagonist
     {
         [Key]

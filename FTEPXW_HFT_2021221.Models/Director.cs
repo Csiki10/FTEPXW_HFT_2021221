@@ -7,8 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FTEPXW_HFT_2021221.Models
-{
-    [Table("directors")]
+{ 
     public class Director
     {
         [Key]
@@ -25,11 +24,11 @@ namespace FTEPXW_HFT_2021221.Models
         // --------------------------------------
 
         [NotMapped]
-        public virtual ICollection<Movie> Movies2 { get; set; }
+        public virtual ICollection<Movie> Movies { get; set; }
 
         public Director()
         {
-            Movies2 = new HashSet<Movie>();
+            Movies = new HashSet<Movie>();
         }
 
     }
