@@ -7,7 +7,8 @@ namespace FTEPXW_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-           
+            //MovieDatabaseContext db = new MovieDatabaseContext();
+            ;
         }
     }
 }
