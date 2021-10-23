@@ -42,7 +42,5 @@ namespace FTEPXW_HFT_2021221.Repository
             old.Oscar = prot.Oscar;
             db.SaveChanges();
         }
-
-
     }
 }
