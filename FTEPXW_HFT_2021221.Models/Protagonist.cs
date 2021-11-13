@@ -16,8 +16,7 @@ namespace FTEPXW_HFT_2021221.Models
 
         [Required]
         public string Name { get; set; }
-        [Required]
-        public string CharacterName { get; set; }        
+             
         [Required]       
         public string Gender { get; set; }
         [Required]

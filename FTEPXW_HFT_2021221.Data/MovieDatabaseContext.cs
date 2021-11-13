@@ -56,7 +56,7 @@ namespace FTEPXW_HFT_2021221.Data
             {
                 ProtagonistID = 1,
                 Name = "Matthew McConaughey",
-                CharacterName = "Cooper",
+                
                 Age = 51,
                 Gender = "man",
                 Oscar = true
@@ -65,7 +65,7 @@ namespace FTEPXW_HFT_2021221.Data
             {
                 ProtagonistID = 2,
                 Name = "Leonardo DiCaprio",
-                CharacterName = "Dominick Cobb",
+                
                 Age = 46,
                 Gender = "man",
                 Oscar = true
@@ -74,7 +74,7 @@ namespace FTEPXW_HFT_2021221.Data
             {
                 ProtagonistID = 3,
                 Name = "Fionn Whitehead",
-                CharacterName = "Fionn Whitehead's",
+           
                 Age = 24,
                 Gender = "man",
                 Oscar = false
@@ -83,7 +83,7 @@ namespace FTEPXW_HFT_2021221.Data
             {
                 ProtagonistID = 4,
                 Name = "Bradley Charles Cooper",
-                CharacterName = "Philip Wenneck",
+
                 Age = 46,
                 Gender = "man",
                 Oscar = false
@@ -92,7 +92,7 @@ namespace FTEPXW_HFT_2021221.Data
             {
                 ProtagonistID = 5,
                 Name = "Timothée Chalamet",
-                CharacterName = "Elio Perlman",
+                
                 Age = 25,
                 Gender = "man",
                 Oscar = false
@@ -101,7 +101,7 @@ namespace FTEPXW_HFT_2021221.Data
             {
                 ProtagonistID = 6,
                 Name = " Tom Hanks",
-                CharacterName = "Forrest Gump",
+                
                 Age = 65,
                 Gender = "man",
                 Oscar = true

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
+
 
 namespace FTEPXW_HFT_2021221.Logic
 {
@@ -39,6 +41,30 @@ namespace FTEPXW_HFT_2021221.Logic
 
         // TODO
         // NONCRUD
+        /* // NEMJÓ
+        public IQueryable DirectorsGroupMovieCountGender()
+        {
+            
+            var q6 = from x in dirRepo.ReadAll()
+                     group x by x.Name into g
+                     orderby g.Key descending
+                     select new
+                     {
+                         _NAME = g.Key,
+                         _MOVIEDB = g.Sum(t => t.Movies.Count(t)),
+                         _XD = g.Select(t => t.Gender),
+
+                     };
+
+                // NEMJÓÓÓÓÓÓÓÓÓÓÓÓ                
+
+            return q6;
+        }
+        */
+
+
+
+
 
 
     }
