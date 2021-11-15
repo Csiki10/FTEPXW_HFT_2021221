@@ -55,8 +55,7 @@ namespace FTEPXW_HFT_2021221.Data
             Protagonist matthewmcconaughey = new Protagonist()
             {
                 ProtagonistID = 1,
-                Name = "Matthew McConaughey",
-                
+                Name = "Matthew McConaughey",              
                 Age = 51,
                 Gender = "man",
                 Oscar = true
@@ -289,10 +288,6 @@ namespace FTEPXW_HFT_2021221.Data
             
             mb.Entity<Protagonist>().HasData(matthewmcconaughey, leonardodicaprio,fionnwhitehead, bradleycharlescooper, timotheechalamet,tomhanks);
            
-            
-            ;
         }
-
-
     }
 }

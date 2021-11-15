@@ -10,8 +10,7 @@ namespace FTEPXW_HFT_2021221.Client
     class Program
     {
         static void Main(string[] args)
-        {
-            
+        {           
             MovieDatabaseContext db = new MovieDatabaseContext();
 
             IMovieRepository repo = new MovieRepository(db);
@@ -23,18 +22,25 @@ namespace FTEPXW_HFT_2021221.Client
             IDirectorRepository repp = new DirectorRepository(db);
             DirectorLogic dLog = new DirectorLogic(repp);
 
-            var q1 = pLog.ReadAll();
+            var q0 = pLog.ReadAll();
             ;
-            var q2 = pLog.TobbFilmesFerfiKor();
-            var q3 = pLog.Oszcar();
+            var q1 = pLog.ProtagonistMoviesCount();
+            var q2 = pLog.ProtagonistMoviesCount16HanzZimmer();
+            var q3 = dLog.DirectorsMoviesCountandIncome();
+            var q4 = dLog.DirectorsGender();
+            var q5 = dLog.DirectorsAge();
             ;
-            var q4 = mLog.MufajCsoportositas();
-            var q5 = mLog.Mindenes();
-            //var q6 = dLog.DirectorsGroupMovieCountGender();
-            ;
+            var q6 = mLog.ProtagonistGroup();
+            var q7 = mLog.DirectorGroup();
+            var q8 = mLog.Genre();
+            var q9 = mLog.DirectorGenderGroup();
+            var q10 = mLog.ProtagonistAgeGroup();
 
-            
-            
+
+
+            ;
+           
+           
         }
     }
 }

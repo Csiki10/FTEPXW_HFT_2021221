@@ -16,11 +16,34 @@ namespace FTEPXW_HFT_2021221.Logic
         // CRUD
         public void Create(Movie movie)
         {
-            movieRepo.Create(movie);
+            if (movie != null)
+            {
+                if (movie.Name != ""&& movie.Protagonist != null)
+                {                    
+                    movieRepo.Create(movie);
+                }
+                else
+                {
+                    throw new Exception();
+                }              
+            }
+            else
+            {
+                throw new Exception();
+            }
+            
         }
         public Movie Read(int id)
         {
-            return movieRepo.Read(id);
+            if (id >= 0)
+            {
+                return movieRepo.Read(id);
+            }
+            else
+            {
+                throw new Exception();
+            }
+            
         }
         public IEnumerable<Movie> ReadAll()
         {
@@ -28,7 +51,15 @@ namespace FTEPXW_HFT_2021221.Logic
         }
         public void Delete(int id)
         {
-            movieRepo.Delete(id);
+            if (id >= 0)
+            {
+                movieRepo.Delete(id);
+            }
+            else
+            {
+                throw new Exception();
+            }
+            
         }
         public void Update(Movie dir)
         {
@@ -37,40 +68,70 @@ namespace FTEPXW_HFT_2021221.Logic
 
         // TODO
         // NONCRUD
-        public IQueryable MufajCsoportositas()
+        public IEnumerable<object> ProtagonistGroup()
         {
-            var q1 = from x in movieRepo.ReadAll()
-                     group x by x.Genre into g
-                     orderby g.Key
-                     select new
-                     {
-                         _KEY = g.Key,
-                         _MONEY = g.Sum(t => t.Income),
-                         _AVARAGEBUDGET = g.Average(t => t.Budget)
-                     };
-            ;
+            var q = from x in movieRepo.ReadAll().Select(t => t.Protagonist)
+                    group x by x.Name into g
+                    select new
+                    {
+                        _NAME = g.Key,
+                        _COUNT = g.Count(),
+                       
+                    };
 
-            //bef
-            return q1;
+            return q;
         }
-
-        public IQueryable Mindenes()
+        public IEnumerable<object> DirectorGroup()
         {
-            var q5 = from x in movieRepo.ReadAll()
-                     where x.RunningTime > 100 &&
-                     x.Genre == "Drama" &&
-                     x.AgeLimit >= 12
-                     select new
-                     {
-                         _NAME = x.Name,
-                         _GENRE = x.Genre,
-                         _AGELIMIT = x.AgeLimit,
-                         _RUNTIMA = x.RunningTime
-                     };
+            var q = from x in movieRepo.ReadAll().Select(d => d.Director)
+                    group x by x.Name into g
+                    select new
+                    {
+                        _NAME = g.Key,
+                        _COUNT = g.Count(),
+
+                    };
 
 
 
-            return q5;
+            return q;
+        }
+        public IEnumerable<object> Genre()
+        {
+            var q = from x in movieRepo.ReadAll()
+                    group x by x.Genre into g
+                    select new
+                    {
+                        _GENRE = g.Key,
+                        _COUNT = g.Count(),
+                        _C = g.Sum(f => f.Income),
+                    };
+
+            return q;
+        }
+        public IEnumerable<object> DirectorGenderGroup()
+        {
+            var q = from x in movieRepo.ReadAll().Select(r => r.Director)
+                    group x by x.Gender into g
+                    select new
+                    {
+                        _GENDER = g.Key,
+                        _COUNT = g.Count()
+                    };
+
+            return q;
+        }
+        public IEnumerable<object> ProtagonistAgeGroup()
+        {
+            var q = from x in movieRepo.ReadAll().Select(f => f.Protagonist)
+                    group x by x.Age into g
+                    select new
+                    {
+                        _GENDER = g.Key,
+                        _COUNT = g.Count()
+                    };
+
+            return q;
         }
 
 

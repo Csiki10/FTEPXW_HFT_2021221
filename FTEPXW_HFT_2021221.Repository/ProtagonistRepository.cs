@@ -35,8 +35,7 @@ namespace FTEPXW_HFT_2021221.Repository
         public void Update(Protagonist prot)
         {
             var old = Read(prot.ProtagonistID);
-            old.Name = prot.Name;
-            old.CharacterName = prot.CharacterName;
+            old.Name = prot.Name;           
             old.Gender = prot.Gender;
             old.Age = prot.Age;
             old.Oscar = prot.Oscar;

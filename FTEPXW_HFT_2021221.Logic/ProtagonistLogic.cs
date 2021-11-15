@@ -37,38 +37,36 @@ namespace FTEPXW_HFT_2021221.Logic
             protRep.Update(prot);
         }
 
-        // TODO
+        
         // NONCRUD			
         
-        public IQueryable Oszcar()
+        public IEnumerable<object> ProtagonistMoviesCount16HanzZimmer()
         {
-            // var oscaros= protRep.ReadAll().Where(p => p.Oscar);
-            
-
-            var q2 = from x in protRep.ReadAll()
-                     group x by x.Movies into g
+            var q2 = from x in protRep.ReadAll().SelectMany(t => t.Movies)
+                     where x.AgeLimit >= 16 && x.Music == "Hans Zimmer"
+                     group x by x.Protagonist.Name into g
                      select new
                      {
                          _NAME = g.Key,
-                         _COUNT = g.Sum(t => t.ProtagonistID)
+                         _DB = g.Count(),
+                         
                      };
-            return q2;
-        }
 
-        public IQueryable TobbFilmesFerfiKor()
-        {
-            // var q1 = protRep.ReadAll().Where(p => p.Age > 20).Where(k => k.Gender =="férfi").Sum(t => t.Movies.Count);
-            var q2 = from x in protRep.ReadAll()
-                     where x.Age > 20 && x.Gender == "man" && x.Movies.Count > 1
-                     select new
+            return q2;
+        }      
+        public IEnumerable<object> ProtagonistMoviesCount()
+        {            
+            var q2 = from x in protRep.ReadAll().SelectMany(t => t.Movies)
+                     group x by x.Protagonist.Name into g
+                     select new 
                      {
-                         _NAME = x.Name,
-                         _MOVIECOUNT = x.Movies.Count
-
+                         _NAME = g.Key,
+                         _DB = g.Count()
                      };
-
+                     
+            
             return q2;
         }
-        	
+
     }
 }
