@@ -249,145 +249,13 @@ namespace FTEPXW_HFT_2021221.Test
 
             // ---------------------------------------
 
-            var MockProtRepo = new Mock<IProtagonistRepository>();
-            var MockDirRepo = new Mock<IDirectorRepository>();
+            
             var MockMovRepo = new Mock<IMovieRepository>();
 
-            List<Movie> movies = new List<Movie>();
-            movies.Add(interstellar);
-            movies.Add(gentlemen);
             
-            List<Movie> movies2 = new List<Movie>();
-            movies2.Add(inception);
-            movies2.Add(thegreatgatsby);
-
-            List<Movie> movies3 = new List<Movie>();
-            movies3.Add(dunkirk);
-
-            List<Movie> movies4 = new List<Movie>();
-            movies4.Add(hangover);
-
-            List<Movie> movies5 = new List<Movie>();
-            movies5.Add(dune);
-            movies5.Add(callmebyyourname);
-
-            List<Movie> movies6 = new List<Movie>();
-            movies6.Add(forrestgump);
            
 
-            var protagonists = new List<Protagonist>()
-            {
-                new Protagonist()
-                {
-                    ProtagonistID = 1,
-                    Name = "Matthew McConaughey",
-                    Age = 51,
-                    Gender = "man",
-                    Oscar = true,
-                    Movies = movies
-                },
-                new Protagonist()
-                {
-                    ProtagonistID = 2,
-                    Name = "Leonardo DiCaprio",
-
-                    Age = 46,
-                    Gender = "man",
-                    Oscar = true,
-                    Movies = movies2
-                },//2
-                new Protagonist()
-                {
-                    ProtagonistID = 3,
-                    Name = "Fionn Whitehead",
-                    Age = 24,
-                    Gender = "man",
-                    Oscar = false,
-                    Movies = movies3
-                },
-                new Protagonist()
-                {
-                    ProtagonistID = 4,
-                    Name = "Bradley Charles Cooper",
-                    Age = 46,
-                    Gender = "man",
-                    Oscar = false,
-                    Movies = movies4
-                },
-                new Protagonist()
-                {
-                    ProtagonistID = 5,
-                    Name = "Timothée Chalamet",
-                    Age = 25,
-                    Gender = "man",
-                    Oscar = false,
-                    Movies = movies5
-
-                },//2
-                new Protagonist()
-                {
-                    ProtagonistID = 6,
-                    Name = " Tom Hanks",
-                    Age = 65,
-                    Gender = "man",
-                    Oscar = true,
-                    Movies = movies6
-
-                }
-            }.AsQueryable();
-            var directors = new List<Director>()
-            {
-                new Director()
-                {
-                    DirectorID = 1,
-                    Name = "Robert Zemeckis",
-                    Age = 69,
-                    Gender = "man"
-                },
-                new Director()
-                {
-                    DirectorID = 2,
-                    Name = "Christopher Nolan",
-                    Age = 51,
-                    Gender = "man"
-                },//3
-                new Director()
-                {
-                    DirectorID = 3,
-                    Name = "Todd Phillips",
-                    Age = 50,
-                    Gender = "man"
-                },
-                new Director()
-                {
-                    DirectorID = 4,
-                    Name = "Luca Guadagnino",
-                    Age = 50,
-                    Gender = "man"
-                },
-                new Director()
-                {
-                    DirectorID = 5,
-                    Name = "Guy Ritchie",
-                    Age = 53,
-                    Gender = "man"
-                },
-                new Director()
-                {
-                    DirectorID = 6,
-                    Name = "Baz Luhrmann",
-                    Age = 59,
-                    Gender = "man"
-                },
-                new Director()
-                {
-                    DirectorID = 7,
-                    Name = "Denis Villeneuve",
-                    Age = 54,
-                    Gender = "man"
-                },
-
-            }.AsQueryable();
+            
             var moviess = new List<Movie>()
             {
                 new Movie()
@@ -529,12 +397,10 @@ namespace FTEPXW_HFT_2021221.Test
                 }
             }.AsQueryable();
 
-            MockProtRepo.Setup((m) => m.ReadAll()).Returns(protagonists);
-            MockDirRepo.Setup((m) => m.ReadAll()).Returns(directors);
+            
             MockMovRepo.Setup((m) => m.ReadAll()).Returns(moviess);
 
-            pLog = new ProtagonistLogic(MockProtRepo.Object);   
-            dLog = new DirectorLogic(MockDirRepo.Object);
+            
             mLog = new MovieLogic(MockMovRepo.Object);
         }
 

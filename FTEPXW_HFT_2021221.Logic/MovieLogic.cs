@@ -134,6 +134,5 @@ namespace FTEPXW_HFT_2021221.Logic
             return q;
         }
 
-
     }
 }
