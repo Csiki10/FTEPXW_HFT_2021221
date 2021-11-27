@@ -313,7 +313,7 @@ namespace FTEPXW_HFT_2021221.Client
                 Console.WriteLine("Error, not existing opcion");
             }         
         }
-
+        
         private static Movie  MovieCreator()
         {
             List<string> props = new List<string>()
