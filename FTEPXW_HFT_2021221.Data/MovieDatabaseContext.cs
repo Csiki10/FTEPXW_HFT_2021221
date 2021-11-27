@@ -15,10 +15,8 @@ namespace FTEPXW_HFT_2021221.Data
         public virtual DbSet<Protagonist> Protagonists { get; set; }
         
         public MovieDatabaseContext()
-        {
-            
-            this.Database.EnsureCreated();
-            
+        {           
+            this.Database.EnsureCreated();            
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

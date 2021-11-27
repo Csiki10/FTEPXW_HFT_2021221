@@ -6,10 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FTEPXW_HFT_2021221.Data\FTEPXW_HFT_2021221.Data.csproj" />
-    <ProjectReference Include="..\FTEPXW_HFT_2021221.Logic\FTEPXW_HFT_2021221.Logic.csproj" />
+    <None Remove="Program.cs~RF2f36f0b6.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FTEPXW_HFT_2021221.Models\FTEPXW_HFT_2021221.Models.csproj" />
-    <ProjectReference Include="..\FTEPXW_HFT_2021221.Repository\FTEPXW_HFT_2021221.Repository.csproj" />
   </ItemGroup>
 
 </Project>

@@ -11,6 +11,20 @@ namespace FTEPXW_HFT_2021221.Models
 {
     public class Movie
     {
+        public Movie(string name, string music, int runningTime, int budget, string genre, int ageLimit, int income)
+        {
+            Name = name;
+            Music = music;
+            RunningTime = runningTime;
+            Budget = budget;
+            Genre = genre;
+            AgeLimit = ageLimit;
+            Income = income;
+        }
+        public Movie()
+        {
+
+        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]       
         public int MovieID { get; set; }
