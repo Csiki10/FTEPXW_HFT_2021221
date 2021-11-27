@@ -42,7 +42,7 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
         }
 
         // PUT /movie
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Movie value)
         {
             mLog.Update(value);

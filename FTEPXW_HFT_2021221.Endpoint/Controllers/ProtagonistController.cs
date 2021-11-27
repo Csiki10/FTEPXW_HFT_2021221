@@ -44,7 +44,7 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
         }
 
         // PUT /protagonist
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Protagonist value)
         {
             pLog.Update(value);

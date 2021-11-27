@@ -27,14 +27,18 @@ namespace FTEPXW_HFT_2021221.Models
         // --------------------------------------
 
         [NotMapped]
-        public virtual ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<Movie> Movies { get; set; } 
 
+        public Protagonist(string name, string gender, int age, bool oscar)
+        {
+            Name = name;
+            Gender = gender;
+            Age = age;
+            Oscar = oscar;
+        }
         public Protagonist()
         {
-            Movies = new HashSet<Movie>();
+
         }
-
-
-
     }
 }

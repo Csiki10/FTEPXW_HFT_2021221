@@ -18,7 +18,7 @@ namespace FTEPXW_HFT_2021221.Logic
         {
             if (movie != null)
             {
-                if (movie.Name != "" && movie.Protagonist != null)
+                if (movie.Name != "" && movie.Music != "")
                 {
                     movieRepo.Create(movie);
                 }

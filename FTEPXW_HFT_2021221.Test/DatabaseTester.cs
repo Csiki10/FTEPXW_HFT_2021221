@@ -460,7 +460,7 @@ namespace FTEPXW_HFT_2021221.Test
         public void MovieCreateTEST3()
         {
             Movie m = new Movie();
-            m.Protagonist = null;
+            m.Music = "";
             Assert.That(() =>
             {
                 mLog.Create(m);

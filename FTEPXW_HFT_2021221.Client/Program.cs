@@ -9,112 +9,309 @@ namespace FTEPXW_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-            System.Threading.Thread.Sleep(12000);
+            System.Threading.Thread.Sleep(10000);
 
             RestService rest = new RestService("http://localhost:44216");
 
             bool end = false;
             while (end == false)
             {
-                Menu();
+                Display.Menu(); // menu
                 Console.Write("\n Choose opcion: ");
-                int val = int.Parse(Console.ReadLine());
+                int menu = int.Parse(Console.ReadLine());
+            
+                if (menu == 1) // CRUD
+                {
+                    Console.Clear();
+                    Display.Tables(); // 3 table
+                    Console.Write("\n Choose opcion: ");
+                    int table = int.Parse(Console.ReadLine());
 
-                if (val == 3)
+                    switch (table) // 3 table choos (Movie, Prot, Dir)
+                    {
+                        case 1: // Movie
+                            Console.Clear();
+                            Display.CRUDmethods(); // CRUDS
+
+                            Console.Write("\n Choose opcion: ");
+                            int crud = int.Parse(Console.ReadLine());
+
+                            Console.Clear();
+                            CRUDOptions(1, rest, crud);
+                            break;
+                        case 2: // Prot
+                            Display.CRUDmethods();
+
+                            Console.Write("\n Choose opcion: ");
+                            int crud1 = int.Parse(Console.ReadLine());
+
+                            Console.Clear();
+                            CRUDOptions(2, rest, crud1);
+                            break;
+                        case 3: // Dir
+                            Display.CRUDmethods();
+
+                            Console.Write("\n Choose opcion: ");
+                            int crud2 = int.Parse(Console.ReadLine());
+
+                            Console.Clear();
+                            CRUDOptions(3, rest, crud2);
+                            break;                       
+                    }                  
+                }
+                else if (menu == 2) // NONCRUD
+                {
+                    Console.Clear();
+                    Display.NoncurMethods();
+                    Console.Write("\n Choose opcion: ");
+                    int crud = int.Parse(Console.ReadLine());
+
+                    switch (crud)
+                    {
+                        case 1: // ProtagonistGroup
+                            var q = rest.GetSingle<IEnumerable<object>>("stat/protagonistGroup");                      
+                            foreach (var item in q)
+                            {
+                                Console.WriteLine(item);
+                            }
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
+                            break;
+
+                        case 2: // ProtagonistAgeGroup
+                            var q1 = rest.GetSingle<IEnumerable<object>>("stat/protagonistAgeGroup");
+                            foreach (var item in q1)
+                            {                              
+                                Console.WriteLine(item);
+                            }
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
+                            break;
+
+                        case 3: // DirectorGroup
+                            var q2 = rest.GetSingle<IEnumerable<object>>("stat/directorGroup");
+                            foreach (var item in q2)
+                            {
+                                Console.WriteLine(item);
+                            }
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
+                            break;
+
+                        case 4: // Genre
+                            var q3 = rest.GetSingle<IEnumerable<object>>("stat/genre");
+                            foreach (var item in q3)
+                            {
+                                Console.WriteLine(item);
+                            }
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
+                            break;
+
+                        case 5: // DirectorGenderGroup
+                            var q4 = rest.GetSingle<IEnumerable<object>>("stat/directorGenderGroup");
+                            foreach (var item in q4)
+                            {
+                                Console.WriteLine(item);
+                            }
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
+                            break;
+                    }
+                }
+                else if (menu == 3)
                 {
                     end = true;
-                    Console.WriteLine("Succesfull exit! ");
-                }
-                else if (val == 1)
-                {
-                    Console.Clear();
-                    Tables();
-                    Console.Write("\n Choose opcion: ");
-                    int val1 = int.Parse(Console.ReadLine());
-
-                    if (val1 == 1) // Movie
-                    {
-                        Console.Clear();
-                        CRUDmethods();
-
-                        Console.Write("\n Choose opcion: ");
-                        int val2 = int.Parse(Console.ReadLine());
-
-                        Console.Clear();
-                        CRUDOptions(rest, val2);
-
-                    }
-                    else if (val1 == 2) // Protagonist
-                    {
-                        CRUDmethods();
-
-                        Console.WriteLine("\n Choose opcion: ");
-                        int val2 = int.Parse(Console.ReadLine());
-                    }
-                    else if (val1 == 3) // Director
-                    {
-                        CRUDmethods();
-
-                        Console.WriteLine("\n Choose opcion: ");
-                        int val2 = int.Parse(Console.ReadLine());
-                    }
-                    else // error
-                    {
-                        end = true;
-                        Console.WriteLine("Error, not existing opcion");
-                    } 
-                }
-                else if (val == 2)
-                {
-                    Console.Clear();
+                    Console.WriteLine(" Succesfull exit! ");
                 }
                 else
                 {
                     end = true;
                     Console.WriteLine("Error, not existing opcion");
                 }
-            }
-
-            
-
-            ;
+            }                      
         }
 
-        private static void CRUDOptions(RestService rest, int val2)
+
+        private static void CRUDOptions(int type, RestService rest, int crud)
         {
-            switch (val2)
+            if (type == 1) // movie
             {
-                case 1: // create
-                    Movie m = MovieCreator();
-                    rest.Put(m, "movie");
-                    break;
+                switch (crud)
+                {
+                    case 1: // create
+                        var m = MovieCreator();
+                        ;
+                        rest.Post(m,"movie");
+                        Display.DisplayCreate("Movie");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();                       
+                        break;
 
-                case 2: // read
-                    Console.WriteLine("Id: ");
-                    int id = int.Parse(Console.ReadLine());
-                    var res = rest.Get<Movie>(id, "movie");
-                    break;
+                    case 2: // read
+                        Console.WriteLine("Id: ");
+                        int id = int.Parse(Console.ReadLine());
+                        var res = rest.Get<Movie>(id, "movie");
+                        Display.DisplayRead(res, 1);
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();                      
+                        break;
 
-                case 3: // readall
-                    var res1 = rest.Get<Movie>("movie");
-                    ;
-                    break;
+                    case 3: // readall
+                        var res1 = rest.Get<Movie>("movie");
+                        List<string> props = new List<string>()
+                                {
+                                "Name",
+                                "Music",
+                                "RunningTime",
+                                "Budget",
+                                "Genre",
+                                "AgeLimit",
+                                "Income",
+                                "ProtagonistID",
+                                "DirectorID"
+                                };
+                        Display.MoviePropDisplay(props,res1);
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
 
-                case 4: // update
-                    Movie m1 = MovieCreator();
-                    rest.Post(m1, "movie");
-                    break;
+                    case 4: // update                  
+                        var m1= MovieCreator();
+                        rest.Put(m1, "movie");
+                        Display.DisplayUpdate("Movie");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
 
-                case 5: // delete
-                    Console.WriteLine("Id: ");
-                    int id1 = int.Parse(Console.ReadLine());
-                    rest.Delete(id1, "movie");
-                    break;
+                    case 5: // delete
+                        Console.WriteLine("Id: ");
+                        int id1 = int.Parse(Console.ReadLine());
+                        rest.Delete(id1, "movie");
+                        Display.DisplayDelete("Movie");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
 
-                default:
-                    Console.WriteLine("Error, not existing opcion");
-                    break;
+                    default:
+                        Console.WriteLine("Error, not existing opcion");
+                        break;
+                }
             }
+            else if (type == 2) // prot
+            {
+                switch (crud)
+                {
+                    case 1: // create                 
+                        var x = ProtagonistrCreator();                      
+                        rest.Post(x, "protagonist");
+                        Display.DisplayCreate("Protagonist");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+                    case 2: // read
+                        Console.WriteLine("Id: ");
+                        int id = int.Parse(Console.ReadLine());
+                        var res = rest.Get<Protagonist>(id, "protagonist");
+                        Display.DisplayRead(res, 2);
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+                    case 3: // readall
+                        var res1 = rest.Get<Protagonist>("protagonist");
+                        List<string> props = new List<string>()
+                                {
+                                "Name",
+                                "Gender",
+                                "Age",
+                                "Oscar"
+                                };
+                        Display.ProtPropDisplay(props, res1);
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+                    case 4: // update                  
+                        rest.Put(ProtagonistrCreator(), "protagonist");
+                        Display.DisplayUpdate("Protagonist");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+                    case 5: // delete
+                        Console.WriteLine("Id: ");
+                        int id1 = int.Parse(Console.ReadLine());
+                        rest.Delete(id1, "protagonist");
+                        Display.DisplayDelete("Protagonist");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+                    default:
+                        Console.WriteLine("Error, not existing opcion");
+                        break;
+                }
+            }
+            else if (type == 3) // dir
+            {
+                switch (crud)
+                {
+                    case 1: // create                 
+                        rest.Post(DirectorCreator(), "director");
+                        Display.DisplayCreate("Director");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+                    case 2: // read
+                        Console.WriteLine("Id: ");
+                        int id = int.Parse(Console.ReadLine());
+                        var res = rest.Get<Director>(id, "director");
+                        Display.DisplayRead(res, 3);
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+                    case 3: // readall
+                        var res1 = rest.Get<Director>("director");
+                        List<string> props = new List<string>()
+                                {
+                                "Name",
+                                "Gender",
+                                "Age",
+                                };
+                        Display.DirPropDisplay(props, res1);
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+                    case 4: // update                  
+                        rest.Put(DirectorCreator(), "director");
+                        Display.DisplayUpdate("Director");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+                    case 5: // delete
+                        Console.WriteLine("Id: ");
+                        int id1 = int.Parse(Console.ReadLine());
+                        rest.Delete(id1, "director");
+                        Display.DisplayDelete("Director");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+                    default:
+                        Console.WriteLine("Error, not existing opcion");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error, not existing opcion");
+            }         
         }
 
         private static Movie  MovieCreator()
@@ -127,14 +324,17 @@ namespace FTEPXW_HFT_2021221.Client
                                 "Budget",
                                 "Genre",
                                 "AgeLimit",
-                                "Income"
+                                "Income",
+                                "ProtagonistID",
+                                "DirectorID"
                                 };
             Movie m = new Movie();
             Console.WriteLine("Set the movie datas: ");
             foreach (var prop in props)
             {
+                Console.Write(prop+": ");
                 switch (prop)
-                {
+                {                    
                     case "Name":
                         m.Name = Console.ReadLine();
                         break;
@@ -156,40 +356,76 @@ namespace FTEPXW_HFT_2021221.Client
                     case "Income":
                         m.Income = int.Parse(Console.ReadLine());
                         break;
-                }
+                        
+                    case "ProtagonistID":
+                        m.ProtagonistID = int.Parse(Console.ReadLine());
+                        break;
+                    case "DirectorID":
+                        m.DirectorID = int.Parse(Console.ReadLine());
+                        break;
+                }             
             }
             return m;
-        }
-
-        private static void CRUDmethods()
+        }       
+        private static Protagonist ProtagonistrCreator()
         {
-            Console.Clear();
-            Console.WriteLine("--- CRUD options -----");
-            Console.WriteLine("[1. option] - Create");
-            Console.WriteLine("[2. option] - Read");
-            Console.WriteLine("[3. option] - Read All");
-            Console.WriteLine("[4. option] - Update");
-            Console.WriteLine("[5. option] - Delete");
-            Console.WriteLine("----------------------");
+            List<string> props = new List<string>()
+                                {
+                                "Name",
+                                "Gender",
+                                "Age",
+                                "Oscar"
+                                };
+            Protagonist d = new Protagonist();
+            Console.WriteLine("Set the Protagonist datas: ");
+            foreach (var prop in props)
+            {
+                Console.Write(prop + ": ");
+                switch (prop)
+                {
+                    case "Name":
+                        d.Name = Console.ReadLine();
+                        break;
+                    case "Gender":
+                        d.Gender = Console.ReadLine();
+                        break;
+                    case "Age":
+                        d.Age = int.Parse(Console.ReadLine());
+                        break;
+                    case "Oscar":
+                        d.Oscar = Convert.ToBoolean(Console.ReadLine());
+                        break;
+                }
+            }
+            return d;
         }
-
-        private static void Tables()
+        private static Director DirectorCreator()
         {
-            Console.WriteLine("----------- Tables -----------");
-            Console.WriteLine("[1. option] - Movie");
-            Console.WriteLine("[2. option] - Protagonist");
-            Console.WriteLine("[3. option] - Director");
-            Console.WriteLine("------------------------------");
-        }
-
-        private static void Menu()
-        {
-            Console.Clear();
-            Console.WriteLine("--------------- MENU ---------------");
-            Console.WriteLine("[1. option] - CRUD methods");
-            Console.WriteLine("[2. option] - NONCRUD methods");
-            Console.WriteLine("[3. option] - Exit");
-            Console.WriteLine("------------------------------------");
+            List<string> props = new List<string>()
+                                {
+                                "Name",
+                                "Gender",
+                                "Age",
+                                };
+            Director d = new Director();
+            Console.WriteLine("Set the director datas: ");
+            foreach (var prop in props)
+            {
+                Console.Write(prop + ": ");
+                switch (prop)
+                {
+                    case "Name":
+                        d.Name = Console.ReadLine();
+                        break;
+                    case "Gender":
+                        d.Gender = Console.ReadLine();
+                        break;
+                    case "Age":
+                        d.Age = int.Parse(Console.ReadLine());
+                        break;
+                }
+            }
+            return d;
         }
     }
 }

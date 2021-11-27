@@ -43,7 +43,7 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
         }
 
         // PUT a/director/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Director value)
         {
             dLog.Update(value);
