@@ -1,4 +1,5 @@
-﻿using FTEPXW_HFT_2021221.Models;
+﻿using FTEPXW_HFT_2021221.Logic;
+using FTEPXW_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,43 +13,47 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
-        
+        IMovieLogic mLog;
 
-        public MovieController()
+        public MovieController(IMovieLogic mLog)
         {
-
+            this.mLog = mLog;
         }
 
-        // GET: /Movie
+        // GET: /movie
         [HttpGet]
         public IEnumerable<Movie> Get()
         {
-           
+            return mLog.ReadAll();
         }
 
-        // GET api/<MovieController>/5
+        // GET /movie/4
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Movie Get(int id)
         {
-            return "value";
+            return mLog.Read(id);
         }
 
-        // POST api/<MovieController>
+        // POST /movie
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Movie value)
         {
+            mLog.Create(value);
         }
 
-        // PUT api/<MovieController>/5
+        // PUT /movie
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put([FromBody] Movie value)
         {
+            mLog.Update(value);
+
         }
 
-        // DELETE api/<MovieController>/5
+        // DELETE /movie/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            mLog.Delete(id);
         }
     }
 }

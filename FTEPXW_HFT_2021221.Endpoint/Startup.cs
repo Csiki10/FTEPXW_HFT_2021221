@@ -1,3 +1,6 @@
+using FTEPXW_HFT_2021221.Data;
+using FTEPXW_HFT_2021221.Logic;
+using FTEPXW_HFT_2021221.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,12 +14,19 @@ using System.Threading.Tasks;
 namespace FTEPXW_HFT_2021221.Endpoint
 {
     public class Startup
-    {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+    {       
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddTransient<IMovieLogic, MovieLogic>();
+            services.AddTransient<IProtagonistLogic, ProtagonistLogic>();
+            services.AddTransient<IDirectorLogic, DirectorLogic>();
+
+            services.AddTransient<IMovieRepository, MovieRepository>();
+            services.AddTransient<IProtagonistRepository, ProtagonistRepository>();
+            services.AddTransient<IDirectorRepository, DirectorRepository>();
+
+            services.AddTransient<MovieDatabaseContext, MovieDatabaseContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

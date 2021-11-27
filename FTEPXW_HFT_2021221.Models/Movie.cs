@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace FTEPXW_HFT_2021221.Models
@@ -33,14 +34,18 @@ namespace FTEPXW_HFT_2021221.Models
 
         [ForeignKey(nameof(Protagonist))]
         public int ProtagonistID { get; set; }
+
         [NotMapped]
+        [JsonIgnore]
         public virtual Protagonist Protagonist { get; set; }
 
         // --------------------------------------
         
         [ForeignKey(nameof(Director))]
         public int DirectorID { get; set; }
+
         [NotMapped]
+        [JsonIgnore]
         public virtual Director Director { get; set; }
         
     }
