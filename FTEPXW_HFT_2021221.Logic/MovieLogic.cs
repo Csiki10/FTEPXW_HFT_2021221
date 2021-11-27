@@ -104,7 +104,7 @@ namespace FTEPXW_HFT_2021221.Logic
                     {
                         _GENRE = g.Key,
                         _COUNT = g.Count(),
-                        _C = g.Sum(f => f.Income),
+                        _INCOME = g.Sum(f => f.Income),
                     };
 
             return q;
