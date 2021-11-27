@@ -13,9 +13,7 @@ namespace FTEPXW_HFT_2021221.Test
 {
     [TestFixture]
     class DatabaseTester
-    {
-        ProtagonistLogic pLog;
-        DirectorLogic dLog;
+    {      
         MovieLogic mLog;
 
         public DatabaseTester()
@@ -248,13 +246,8 @@ namespace FTEPXW_HFT_2021221.Test
             };
 
             // ---------------------------------------
-
             
-            var MockMovRepo = new Mock<IMovieRepository>();
-
-            
-           
-
+            var MockMovRepo = new Mock<IMovieRepository>();   
             
             var moviess = new List<Movie>()
             {
@@ -396,11 +389,9 @@ namespace FTEPXW_HFT_2021221.Test
                     Protagonist = timotheechalamet
                 }
             }.AsQueryable();
-
-            
+         
             MockMovRepo.Setup((m) => m.ReadAll()).Returns(moviess);
-
-            
+     
             mLog = new MovieLogic(MockMovRepo.Object);
         }
 

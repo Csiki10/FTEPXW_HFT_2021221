@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace FTEPXW_HFT_2021221.Logic
 {
-    public class DirectorLogic
+    public class DirectorLogic : IDirectorLogic
     {
         IDirectorRepository dirRepo;
         public DirectorLogic(IDirectorRepository dirRepo)
         {
             this.dirRepo = dirRepo;
         }
-        
+
         public void Create(Director dir)
         {
             dirRepo.Create(dir);
@@ -50,7 +50,7 @@ namespace FTEPXW_HFT_2021221.Logic
                         _INCOME = g.Sum(t => t.Income)
 
                     };
-                   
+
 
             return q;
         }
@@ -60,9 +60,9 @@ namespace FTEPXW_HFT_2021221.Logic
                     group x by x.Director.Gender into g
                     select new
                     {
-                       _GENDER = g.Key,
-                       _COUNT = g.Count(),
-                  
+                        _GENDER = g.Key,
+                        _COUNT = g.Count(),
+
 
 
                     };

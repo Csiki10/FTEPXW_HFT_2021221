@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace FTEPXW_HFT_2021221.Logic
 {
-    public class MovieLogic
+    public class MovieLogic : IMovieLogic
     {
         IMovieRepository movieRepo;
         public MovieLogic(IMovieRepository movieRepo)
@@ -18,20 +18,20 @@ namespace FTEPXW_HFT_2021221.Logic
         {
             if (movie != null)
             {
-                if (movie.Name != ""&& movie.Protagonist != null)
-                {                    
+                if (movie.Name != "" && movie.Protagonist != null)
+                {
                     movieRepo.Create(movie);
                 }
                 else
                 {
                     throw new Exception();
-                }              
+                }
             }
             else
             {
                 throw new Exception();
             }
-            
+
         }
         public Movie Read(int id)
         {
@@ -43,7 +43,7 @@ namespace FTEPXW_HFT_2021221.Logic
             {
                 throw new Exception();
             }
-            
+
         }
         public IEnumerable<Movie> ReadAll()
         {
@@ -59,7 +59,7 @@ namespace FTEPXW_HFT_2021221.Logic
             {
                 throw new Exception();
             }
-            
+
         }
         public void Update(Movie dir)
         {
@@ -76,7 +76,7 @@ namespace FTEPXW_HFT_2021221.Logic
                     {
                         _NAME = g.Key,
                         _COUNT = g.Count(),
-                       
+
                     };
 
             return q;

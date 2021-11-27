@@ -1,88 +1,54 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FTEPXW_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace FTEPXW_HFT_2021221.Endpoint.Controllers
 {
-    public class MovieController : Controller
+    [Route("[controller]")]
+    [ApiController]
+    public class MovieController : ControllerBase
     {
-        // GET: MovieController
-        public ActionResult Index()
+        
+
+        public MovieController()
         {
-            return View();
+
         }
 
-        // GET: MovieController/Details/5
-        public ActionResult Details(int id)
+        // GET: /Movie
+        [HttpGet]
+        public IEnumerable<Movie> Get()
         {
-            return View();
+           
         }
 
-        // GET: MovieController/Create
-        public ActionResult Create()
+        // GET api/<MovieController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            return View();
+            return "value";
         }
 
-        // POST: MovieController/Create
+        // POST api/<MovieController>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public void Post([FromBody] string value)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
 
-        // GET: MovieController/Edit/5
-        public ActionResult Edit(int id)
+        // PUT api/<MovieController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            return View();
         }
 
-        // POST: MovieController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        // DELETE api/<MovieController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
-
-        // GET: MovieController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: MovieController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
     }
 }
