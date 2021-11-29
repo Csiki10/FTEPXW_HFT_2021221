@@ -34,7 +34,7 @@ namespace FTEPXW_HFT_2021221.Repository
         }
         public void Update(Movie movie)
         {
-            var old = Read(movie.ProtagonistID);
+            var old = Read(movie.MovieID);
             old.Name = movie.Name;
             old.Music = movie.Music;
             old.RunningTime = movie.RunningTime;

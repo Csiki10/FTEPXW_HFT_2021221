@@ -132,7 +132,7 @@ namespace FTEPXW_HFT_2021221.Client
             }                      
         }
 
-
+        
         private static void CRUDOptions(int type, RestService rest, int crud)
         {
             if (type == 1) // movie
@@ -177,7 +177,7 @@ namespace FTEPXW_HFT_2021221.Client
                         break;
 
                     case 4: // update                  
-                        var m1= MovieCreator();
+                        var m1= MovieCreatorUpdate();
                         rest.Put(m1, "movie");
                         Display.DisplayUpdate("Movie");
                         Console.WriteLine("Press any key to continue");
@@ -234,7 +234,7 @@ namespace FTEPXW_HFT_2021221.Client
                         break;
 
                     case 4: // update                  
-                        rest.Put(ProtagonistrCreator(), "protagonist");
+                        rest.Put(ProtagonistrCreatorUpdate(), "protagonist");
                         Display.DisplayUpdate("Protagonist");
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
@@ -288,7 +288,7 @@ namespace FTEPXW_HFT_2021221.Client
                         break;
 
                     case 4: // update                  
-                        rest.Put(DirectorCreator(), "director");
+                        rest.Put(DirectorCreatorUpdate(), "director");
                         Display.DisplayUpdate("Director");
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
@@ -414,6 +414,132 @@ namespace FTEPXW_HFT_2021221.Client
                 Console.Write(prop + ": ");
                 switch (prop)
                 {
+                    case "Name":
+                        d.Name = Console.ReadLine();
+                        break;
+                    case "Gender":
+                        d.Gender = Console.ReadLine();
+                        break;
+                    case "Age":
+                        d.Age = int.Parse(Console.ReadLine());
+                        break;
+                }
+            }
+            return d;
+        }
+
+        private static Movie MovieCreatorUpdate()
+        {
+            List<string> props = new List<string>()
+                                {
+                                "MovieID",
+                                "Name",
+                                "Music",
+                                "RunningTime",
+                                "Budget",
+                                "Genre",
+                                "AgeLimit",
+                                "Income",
+                                "ProtagonistID",
+                                "DirectorID"
+                                };
+            Movie m = new Movie();
+            Console.WriteLine("Set the movie datas: ");
+            foreach (var prop in props)
+            {
+                Console.Write(prop + ": ");
+                switch (prop)
+                {
+                    case "MovieID":
+                        m.MovieID = int.Parse(Console.ReadLine());
+                        break;
+                    case "Name":
+                        m.Name = Console.ReadLine();
+                        break;
+                    case "Music":
+                        m.Music = Console.ReadLine();
+                        break;
+                    case "RunningTime":
+                        m.RunningTime = int.Parse(Console.ReadLine());
+                        break;
+                    case "Budget":
+                        m.Budget = int.Parse(Console.ReadLine());
+                        break;
+                    case "Genre":
+                        m.Genre = Console.ReadLine();
+                        break;
+                    case "AgeLimit":
+                        m.AgeLimit = int.Parse(Console.ReadLine());
+                        break;
+                    case "Income":
+                        m.Income = int.Parse(Console.ReadLine());
+                        break;
+
+                    case "ProtagonistID":
+                        m.ProtagonistID = int.Parse(Console.ReadLine());
+                        break;
+                    case "DirectorID":
+                        m.DirectorID = int.Parse(Console.ReadLine());
+                        break;
+                }
+            }
+            return m;
+        }
+        private static Protagonist ProtagonistrCreatorUpdate()
+        {
+            List<string> props = new List<string>()
+                                {
+                                "ProtagonistId",
+                                "Name",
+                                "Gender",
+                                "Age",
+                                "Oscar"
+                                };
+            Protagonist d = new Protagonist();
+            Console.WriteLine("Set the Protagonist datas: ");
+            foreach (var prop in props)
+            {
+                Console.Write(prop + ": ");
+                switch (prop)
+                {
+                    case "ProtagonistId":
+                        d.ProtagonistID = int.Parse(Console.ReadLine());
+                        break;
+                    case "Name":
+                        d.Name = Console.ReadLine();
+                        break;
+                    case "Gender":
+                        d.Gender = Console.ReadLine();
+                        break;
+                    case "Age":
+                        d.Age = int.Parse(Console.ReadLine());
+                        break;
+                    case "Oscar":
+                        d.Oscar = Convert.ToBoolean(Console.ReadLine());
+                        break;
+                }
+            }
+            return d;
+        }
+        private static Director DirectorCreatorUpdate()
+        {
+            List<string> props = new List<string>()
+                                {
+                                "DirectorID",
+                                "Name",
+                                "Gender",
+                                "Age",
+                                };
+            Director d = new Director();
+            Console.WriteLine("Set the director datas: ");
+            foreach (var prop in props)
+            {
+                Console.Write(prop + ": ");
+                switch (prop)
+                {
+                    case "DirectorID":
+                        d.DirectorID = int.Parse(Console.ReadLine());
+                        break;
                     case "Name":
                         d.Name = Console.ReadLine();
                         break;
