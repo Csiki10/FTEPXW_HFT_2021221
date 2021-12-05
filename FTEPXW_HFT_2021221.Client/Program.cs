@@ -33,7 +33,7 @@ namespace FTEPXW_HFT_2021221.Client
                             Console.Clear();
                             Display.CRUDmethods(); // CRUDS
 
-                            Console.Write("\n Choose opcion: ");
+                            Console.Write("\n Choose wich CRUD: ");
                             int crud = int.Parse(Console.ReadLine());
 
                             Console.Clear();
@@ -42,7 +42,7 @@ namespace FTEPXW_HFT_2021221.Client
                         case 2: // Prot
                             Display.CRUDmethods();
 
-                            Console.Write("\n Choose opcion: ");
+                            Console.Write("\n Choose wich CRUD: ");
                             int crud1 = int.Parse(Console.ReadLine());
 
                             Console.Clear();
@@ -51,7 +51,7 @@ namespace FTEPXW_HFT_2021221.Client
                         case 3: // Dir
                             Display.CRUDmethods();
 
-                            Console.Write("\n Choose opcion: ");
+                            Console.Write("\n Choose wich CRUD: ");
                             int crud2 = int.Parse(Console.ReadLine());
 
                             Console.Clear();
