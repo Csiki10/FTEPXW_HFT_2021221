@@ -24,7 +24,7 @@ namespace FTEPXW_HFT_2021221.Client
                 {
                     Console.Clear();
                     Display.Tables(); // 3 table
-                    Console.Write("\n Choose opcion: ");
+                    Console.Write("\n Choose wich table: ");
                     int table = int.Parse(Console.ReadLine());
 
                     switch (table) // 3 table choos (Movie, Prot, Dir)
