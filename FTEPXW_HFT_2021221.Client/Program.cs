@@ -63,7 +63,7 @@ namespace FTEPXW_HFT_2021221.Client
                 {
                     Console.Clear();
                     Display.NoncurMethods();
-                    Console.Write("\n Choose opcion: ");
+                    Console.Write("\n Choose wich NON-CRUD: ");
                     int crud = int.Parse(Console.ReadLine());
 
                     switch (crud)
