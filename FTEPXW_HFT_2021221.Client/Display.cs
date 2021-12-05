@@ -48,7 +48,7 @@ namespace FTEPXW_HFT_2021221.Client
 
         public static void DisplayCreate(string type)
         {
-            Console.WriteLine(type+" created succesfully");
+            Console.WriteLine(type+" created succesfully!");
         }
         public static void DisplayUpdate(string type)
         {
