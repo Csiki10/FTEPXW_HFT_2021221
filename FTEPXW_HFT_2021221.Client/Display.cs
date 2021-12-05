@@ -38,11 +38,11 @@ namespace FTEPXW_HFT_2021221.Client
         public static void NoncurMethods()
         {
             Console.WriteLine("---------------- NONCRUD ----------------");
-            Console.WriteLine("[1. opcion] - ProtagonistGroup");
-            Console.WriteLine("[2. opcion] - ProtagonistAgeGroup");
-            Console.WriteLine("[3. opcion] - DirectorGroup");
-            Console.WriteLine("[4. opcion] - Genre");
-            Console.WriteLine("[5. opcion] - DirectorGenderGroup");
+            Console.WriteLine(" [1. opcion] - ProtagonistGroup");
+            Console.WriteLine(" [2. opcion] - ProtagonistAgeGroup");
+            Console.WriteLine(" [3. opcion] - DirectorGroup");
+            Console.WriteLine(" [4. opcion] - Genre");
+            Console.WriteLine(" [5. opcion] - DirectorGenderGroup");
             Console.WriteLine("-----------------------------------------");
         }
 
