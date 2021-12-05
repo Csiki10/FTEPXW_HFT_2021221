@@ -52,7 +52,7 @@ namespace FTEPXW_HFT_2021221.Client
         }
         public static void DisplayUpdate(string type)
         {
-            Console.WriteLine(type + " updated succesfully");
+            Console.WriteLine(type + " updated succesfully!");
         }
         public static void DisplayDelete(string type)
         {
