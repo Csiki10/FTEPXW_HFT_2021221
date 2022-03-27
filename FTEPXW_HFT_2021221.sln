@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{135D04
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTEPXW_HFT_2021221.WpfClient", "FTEPXW_HFT_2021221.WpfClient\FTEPXW_HFT_2021221.WpfClient.csproj", "{857EEC93-E469-4DB7-B413-0C5193C9FCC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{AC3AE779-9350-4ECE-A0B0-CEEBC8168AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC3AE779-9350-4ECE-A0B0-CEEBC8168AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC3AE779-9350-4ECE-A0B0-CEEBC8168AFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{857EEC93-E469-4DB7-B413-0C5193C9FCC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{857EEC93-E469-4DB7-B413-0C5193C9FCC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{857EEC93-E469-4DB7-B413-0C5193C9FCC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{857EEC93-E469-4DB7-B413-0C5193C9FCC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
