@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -30,18 +31,29 @@ namespace FTEPXW_HFT_2021221.WpfClient
 
         public ICommand CreateMovieCommand { get; set; }
         public ICommand DeleteMovieCommand { get; set; }
-        public ICommand EditMovieCommand { get; set; }
-        public ICommand AddMovieCommand { get; set; }
+        public ICommand UpdateMovieCommand { get; set; }
+        
 
         public MainWindowViewModel()
         {
+            Thread.Sleep(6000);
             Movies = new RestCollection<Movie>("http://localhost:44216/", "movie");
 
             CreateMovieCommand = new RelayCommand(() =>
             {
                 Movies.Add(new Movie()
                 {
-                    Name = "ASASSAS"
+                    Name = "ASASSAS",                  
+                    Music = "ASASSAS",
+                    RunningTime = 120,
+                    Budget = 122,
+                    Genre = "ASASSAS",
+                    AgeLimit = 12,
+                    Income = 121212,
+                    DirectorID = 2,
+                    ProtagonistID = 3
+
+
                 });
             });
 

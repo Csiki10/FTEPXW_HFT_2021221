@@ -9,23 +9,25 @@
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}">
+
+        <ListBox Grid.Column="0" ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Label Content="{Binding Name}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            <StackPanel Grid.Column="1">
-                <Button Content="Create Movie " Padding="10" Margin="10" Command="CreateMovieCommand"/>
-                <Button Content="Update Movie " Padding="10" Margin="10" Command="UpdateMovieCommand"/>
-                <Button Content="Delete Movie " Padding="10" Margin="10" Command="DeleteMovieCommand"/>
-            </StackPanel>
-            
         </ListBox>
+        <StackPanel Grid.Column="1">
+            <Button Content="Create movie" Margin="10" Padding="10" Command="{Binding CreateMovieCommand}" />
+            <Button Content="Delete movie" Margin="10" Padding="10" Command="{Binding DeleteMovieCommand}" />
+            <Button Content="Update movie" Margin="10" Padding="10" Command="{Binding UpdateMovieCommand}" />
+        </StackPanel>
+
     </Grid>
 </Window>
