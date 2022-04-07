@@ -44,7 +44,10 @@ namespace FTEPXW_HFT_2021221.WpfClient
         public ICommand CreateDirectorCommand { get; set; }
         public ICommand DeleteDirectorCommand { get; set; }
         public ICommand UpdateDirectorCommand { get; set; }
-        
+
+        public ICommand OpenMovieCommand { get; set; }
+        public ICommand OpenProtagonistCommand { get; set; }
+
 
         public static bool IsInDesignMode
         {
@@ -59,8 +62,8 @@ namespace FTEPXW_HFT_2021221.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Thread.Sleep(5000);
-                Directors = new RestCollection<Director>("http://localhost:44216/", "director");
+                Thread.Sleep(10000);
+                Directors = new RestCollection<Director>("http://localhost:44216/", "director","hub");
 
                 
                 CreateDirectorCommand = new RelayCommand(() =>
@@ -80,6 +83,7 @@ namespace FTEPXW_HFT_2021221.WpfClient
                 {
                     Directors.Update(SelectedDirector);
                 });
+
                 DeleteDirectorCommand = new RelayCommand(() =>
                 {
                     Directors.Delete(SelectedDirector.DirectorID);

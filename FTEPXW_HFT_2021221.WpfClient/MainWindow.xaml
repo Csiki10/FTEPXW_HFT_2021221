@@ -26,22 +26,25 @@
 
         <StackPanel Grid.Column="1">
             <Label Content="Id" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedDirector.DirectorID}" Padding="10" />
+            <TextBox Text="{Binding SelectedDirector.DirectorID}" Padding="10" Margin="10"/>
             
             <Label Content="Name" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedDirector.Name}" Padding="10" />
+            <TextBox Text="{Binding SelectedDirector.Name}" Padding="10" Margin="10"/>
             
             <Label Content="Gender" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedDirector.Gender}" Padding="10" />
+            <TextBox Text="{Binding SelectedDirector.Gender}" Padding="10" Margin="10"/>
             
             <Label Content="Age" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedDirector.Age}" Padding="10" />
+            <TextBox Text="{Binding SelectedDirector.Age}" Padding="10" Margin="10"/>
         </StackPanel>
 
         <StackPanel Grid.Column="2">
             <Button Content="Create" Command="{Binding CreateDirectorCommand}" Padding="10" Margin="10"/>
             <Button Content="Delete" Command="{Binding DeleteDirectorCommand}" Padding="10" Margin="10"/>
             <Button Content="Update" Command="{Binding UpdateDirectorCommand}" Padding="10" Margin="10"/>
+
+            <Button Content="Movie window" Command="{Binding OpenMovieCommand}" Padding="10" Background="LightCoral" Margin="10,130,10,10"/>
+            <Button Content="Protagonist window" Command="{Binding OpenProtagonistCommand}" Padding="10" Margin="10" Background="LightCoral" />
         </StackPanel>
     </Grid>
 </Window>

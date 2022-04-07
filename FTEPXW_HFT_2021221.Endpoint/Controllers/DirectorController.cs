@@ -1,6 +1,8 @@
-﻿using FTEPXW_HFT_2021221.Logic;
+﻿using FTEPXW_HFT_2021221.Endpoint.Services;
+using FTEPXW_HFT_2021221.Logic;
 using FTEPXW_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +16,13 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
     public class DirectorController : ControllerBase
     {
         IDirectorLogic dLog;
+        IHubContext<SignalRHub> hub;
 
-        public DirectorController(IDirectorLogic dLog)
+
+        public DirectorController(IDirectorLogic dLog, IHubContext<SignalRHub> hub)
         {
             this.dLog = dLog;
+            this.hub = hub;
         }
 
 
@@ -40,6 +45,7 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Director value)
         {
             dLog.Create(value);
+            this.hub.Clients.All.SendAsync("DirectorCreated", value);
         }
 
         // PUT a/director/5
@@ -47,13 +53,16 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Director value)
         {
             dLog.Update(value);
+            this.hub.Clients.All.SendAsync("DirectorUpdated", value);
         }
 
         // DELETE /director/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var directorToDelete = this.dLog.Read(id);
             dLog.Delete(id);
+            this.hub.Clients.All.SendAsync("DirectorDeleted", directorToDelete);
         }
     }
 }

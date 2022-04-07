@@ -1,4 +1,5 @@
 using FTEPXW_HFT_2021221.Data;
+using FTEPXW_HFT_2021221.Endpoint.Services;
 using FTEPXW_HFT_2021221.Logic;
 using FTEPXW_HFT_2021221.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +30,8 @@ namespace FTEPXW_HFT_2021221.Endpoint
 
             services.AddTransient<MovieDatabaseContext, MovieDatabaseContext>();
 
+            services.AddSignalR();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieDbApp.Endpoint", Version = "v1"});
@@ -53,6 +56,7 @@ namespace FTEPXW_HFT_2021221.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
