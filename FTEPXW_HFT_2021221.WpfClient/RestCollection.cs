@@ -16,7 +16,7 @@ namespace FTEPXW_HFT_2021221.WpfClient
     {
         HttpClient client;
 
-        public RestService(string baseurl, string pingableEndpoint = "swagger")
+        public RestService(string baseurl, string pingableEndpoint = "director")
         {
             bool isOk = false;
             do

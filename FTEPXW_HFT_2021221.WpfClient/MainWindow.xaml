@@ -5,29 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FTEPXW_HFT_2021221.WpfClient"
         mc:Ignorable="d"
-        Title="Movie Editor" Height="450" Width="800">
+        Title="Director editor" Height="450" Width="800">
     <Window.DataContext>
-        <local:MainWindowViewModel/>
+        <local:MWVM/>
     </Window.DataContext>
-    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0" ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}">
+        <ListBox Grid.Column="0" ItemsSource="{Binding Directors}" SelectedItem="{Binding SelectedDirector}" Grid.ColumnSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding Name}"/>
+                    <Label Content="{Binding Name}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
         <StackPanel Grid.Column="1">
-            <Button Content="Create movie" Margin="10" Padding="10" Command="{Binding CreateMovieCommand}" />
-            <Button Content="Delete movie" Margin="10" Padding="10" Command="{Binding DeleteMovieCommand}" />
-            <Button Content="Update movie" Margin="10" Padding="10" Command="{Binding UpdateMovieCommand}" />
+            <Label Content="Id" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedDirector.DirectorID}" Padding="10" />
+            
+            <Label Content="Name" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedDirector.Name}" Padding="10" />
+            
+            <Label Content="Gender" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedDirector.Gender}" Padding="10" />
+            
+            <Label Content="Age" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedDirector.Age}" Padding="10" />
         </StackPanel>
 
+        <StackPanel Grid.Column="2">
+            <Button Content="Create" Command="{Binding CreateDirectorCommand}" Padding="10" Margin="10"/>
+            <Button Content="Delete" Command="{Binding DeleteDirectorCommand}" Padding="10" Margin="10"/>
+            <Button Content="Update" Command="{Binding UpdateDirectorCommand}" Padding="10" Margin="10"/>
+        </StackPanel>
     </Grid>
 </Window>

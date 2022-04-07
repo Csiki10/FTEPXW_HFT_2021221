@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarDB.Client
+namespace FTEPXW_HFT_2021221.Client
 {
     class RestService
     {
