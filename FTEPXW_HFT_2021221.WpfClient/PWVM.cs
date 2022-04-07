@@ -35,19 +35,15 @@ namespace FTEPXW_HFT_2021221.WpfClient
                         Oscar = value.Oscar                     
                     };
                     OnPropertyChanged();
-                    (CreateDirectorCommand as RelayCommand).NotifyCanExecuteChanged();
+                    (CreateProtagonistCommand as RelayCommand).NotifyCanExecuteChanged();
                 }
             }
         }
 
-        public ICommand CreateDirectorCommand { get; set; }
-        public ICommand DeleteDirectorCommand { get; set; }
-        public ICommand UpdateDirectorCommand { get; set; }
-
-        public ICommand OpenMovieCommand { get; set; }
-        public ICommand OpenProtagonistCommand { get; set; }
-
-
+        public ICommand CreateProtagonistCommand { get; set; }
+        public ICommand DeleteProtagonistCommand { get; set; }
+        public ICommand UpdateProtagonistCommand { get; set; }
+     
         public static bool IsInDesignMode
         {
             get
@@ -60,12 +56,10 @@ namespace FTEPXW_HFT_2021221.WpfClient
         public PWVM()
         {
             if (!IsInDesignMode)
-            {
-                Thread.Sleep(10000);
+            {               
                 Protagonists = new RestCollection<Protagonist>("http://localhost:44216/", "protagonist", "hub");
 
-
-                CreateDirectorCommand = new RelayCommand(() =>
+                CreateProtagonistCommand = new RelayCommand(() =>
                 {
                     Protagonists.Add(new Protagonist()
                     {
@@ -76,12 +70,12 @@ namespace FTEPXW_HFT_2021221.WpfClient
                     });
                 });
 
-                UpdateDirectorCommand = new RelayCommand(() =>
+                UpdateProtagonistCommand = new RelayCommand(() =>
                 {
                     Protagonists.Update(SelectedProtagonist);
                 });
 
-                DeleteDirectorCommand = new RelayCommand(() =>
+                DeleteProtagonistCommand = new RelayCommand(() =>
                 {
                     Protagonists.Delete(SelectedProtagonist.ProtagonistID);
                 },
@@ -91,12 +85,6 @@ namespace FTEPXW_HFT_2021221.WpfClient
                 });
                 SelectedProtagonist = new Protagonist();
             }
-
-
-
         }
-
-
-
     }
 }

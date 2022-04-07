@@ -16,7 +16,7 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0" ItemsSource="{Binding Directors}" SelectedItem="{Binding SelectedDirector}" Grid.ColumnSpan="2">
+        <ListBox Grid.Column="0" ItemsSource="{Binding Directors}" SelectedItem="{Binding SelectedDirector}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Label Content="{Binding Name}" />

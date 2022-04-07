@@ -1,0 +1,62 @@
+﻿<Window x:Class="FTEPXW_HFT_2021221.WpfClient.MovieWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FTEPXW_HFT_2021221.WpfClient"
+        mc:Ignorable="d"
+        Title="MovieWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MovieWVM/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Column="0" ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1">
+            <Label Content="Id" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.MovieID}" Padding="10" Margin="10"/>
+
+            <Label Content="Name" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.Name}" Padding="10" Margin="10"/>
+
+            <Label Content="Genre" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.Genre}" Padding="10" Margin="10"/>
+
+            <Label Content="AgeLimit" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.AgeLimit}" Padding="10" Margin="10"/>
+
+            <Label Content="Budget" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.Budget}" Padding="10" Margin="10"/>
+
+            <Label Content="DirectorID" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.DirectorID}" Padding="10" Margin="10"/>
+
+            <Label Content="ProtagonistID" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.ProtagonistID}" Padding="10" Margin="10"/>
+
+            <Label Content="Income" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.Income}" Padding="10" Margin="10"/>
+
+            <Label Content="Music" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.Music}" Padding="10" Margin="10"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2">
+            <Button Content="Create" Command="{Binding CreateMovieCommand}" Padding="10" Margin="10"/>
+            <Button Content="Delete" Command="{Binding DeleteMovieCommand}" Padding="10" Margin="10"/>
+            <Button Content="Update" Command="{Binding UpdateMovieCommand}" Padding="10" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>

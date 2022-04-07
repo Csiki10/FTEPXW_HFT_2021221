@@ -1,6 +1,8 @@
-﻿using FTEPXW_HFT_2021221.Logic;
+﻿using FTEPXW_HFT_2021221.Endpoint.Services;
+using FTEPXW_HFT_2021221.Logic;
 using FTEPXW_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +17,11 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
     public class ProtagonistController : ControllerBase
     {
         IProtagonistLogic pLog;
-
-        public ProtagonistController(IProtagonistLogic pLog)
+        IHubContext<SignalRHub> hub;
+        public ProtagonistController(IProtagonistLogic pLog, IHubContext<SignalRHub> hub)
         {
             this.pLog = pLog;
-
+            this.hub = hub;
         }
 
         // GET: /protagonist
@@ -41,6 +43,7 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Protagonist value)
         {
             pLog.Create(value);
+            this.hub.Clients.All.SendAsync("ProtagonistCreated", value);
         }
 
         // PUT /protagonist
@@ -48,13 +51,16 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Protagonist value)
         {
             pLog.Update(value);
+            this.hub.Clients.All.SendAsync("ProtagonistUpdated", value);
         }
 
         // DELETE /protagonist/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var protagonistToDelete = this.pLog.Read(id);
             pLog.Delete(id);
+            this.hub.Clients.All.SendAsync("ProtagonistDeleted", protagonistToDelete);
         }
     }
 }

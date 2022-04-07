@@ -6,12 +6,45 @@
         xmlns:local="clr-namespace:FTEPXW_HFT_2021221.WpfClient"
         mc:Ignorable="d"
         Title="ProtagonistWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:PWVM/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="111*"/>
-            <ColumnDefinition Width="157*"/>
-            <ColumnDefinition Width="132*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
+        <ListBox Grid.Column="0" ItemsSource="{Binding Protagonists}" SelectedItem="{Binding SelectedProtagonist}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1">
+            <Label Content="Id" Padding="5" Margin="5" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedProtagonist.ProtagonistID}" Padding="5" Margin="5"/>
+
+            <Label Content="Name" Padding="5" Margin="5" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedProtagonist.Name}" Padding="5" Margin="5"/>
+
+            <Label Content="Gender" Padding="5" Margin="5" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedProtagonist.Gender}" Padding="5" Margin="5"/>
+
+            <Label Content="Age" Padding="5" Margin="5" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedProtagonist.Age}" Padding="5" Margin="5"/>
+
+            <Label Content="Oscar" Padding="5" Margin="5" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedProtagonist.Oscar}" Padding="5" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2">
+            <Button Content="Create" Command="{Binding CreateProtagonistCommand}" Padding="10" Margin="10"/>
+            <Button Content="Delete" Command="{Binding DeleteProtagonistCommand}" Padding="10" Margin="10"/>
+            <Button Content="Update" Command="{Binding UpdateProtagonistCommand}" Padding="10" Margin="10"/>
+        </StackPanel>
     </Grid>
 </Window>

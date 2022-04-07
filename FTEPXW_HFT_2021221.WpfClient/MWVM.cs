@@ -32,8 +32,6 @@ namespace FTEPXW_HFT_2021221.WpfClient
                         Gender = value.Gender,
                         Age = value.Age,
                         DirectorID = value.DirectorID
-                        
-                        // todo
                     };
                     OnPropertyChanged();
                     (CreateDirectorCommand as RelayCommand).NotifyCanExecuteChanged();
@@ -73,9 +71,6 @@ namespace FTEPXW_HFT_2021221.WpfClient
                         Name = SelectedDirector.Name,
                         Gender = SelectedDirector.Gender,
                         Age = SelectedDirector.Age,
-                        
-                        //todo
-
                     });
                 });
 
@@ -93,6 +88,18 @@ namespace FTEPXW_HFT_2021221.WpfClient
                     return SelectedDirector != null;
                 });
                 SelectedDirector = new Director();
+
+                OpenProtagonistCommand = new RelayCommand(() =>
+                   {
+                       ProtagonistWindow window = new ProtagonistWindow();
+                       window.Show();
+                   });
+
+                OpenMovieCommand = new RelayCommand(() =>
+                {
+                    MovieWindow window2 = new MovieWindow();
+                    window2.Show();
+                 });
             }
 
 
