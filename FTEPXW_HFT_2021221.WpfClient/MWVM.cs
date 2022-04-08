@@ -87,7 +87,7 @@ namespace FTEPXW_HFT_2021221.WpfClient
                 {
                     return SelectedDirector != null;
                 });
-                SelectedDirector = new Director();
+                
 
                 OpenProtagonistCommand = new RelayCommand(() =>
                    {
@@ -100,6 +100,7 @@ namespace FTEPXW_HFT_2021221.WpfClient
                     MovieWindow window2 = new MovieWindow();
                     window2.Show();
                  });
+                SelectedDirector = new Director();
             }
 
 

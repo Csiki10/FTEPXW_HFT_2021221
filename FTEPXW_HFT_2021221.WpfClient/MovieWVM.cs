@@ -94,6 +94,7 @@ namespace FTEPXW_HFT_2021221.WpfClient
                 {
                     return SelectedMovie != null;
                 });
+
                 SelectedMovie = new Movie();
             
             }

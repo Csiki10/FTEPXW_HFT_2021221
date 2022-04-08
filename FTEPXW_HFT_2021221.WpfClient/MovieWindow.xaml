@@ -25,32 +25,32 @@
         </ListBox>
 
         <StackPanel Grid.Column="1">
-            <Label Content="Id" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedMovie.MovieID}" Padding="10" Margin="10"/>
+            <Label Content="Id" Padding="2" Margin="2" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.MovieID}" Padding="2" Margin="2"/>
 
-            <Label Content="Name" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedMovie.Name}" Padding="10" Margin="10"/>
+            <Label Content="Name" Padding="2" Margin="2" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.Name}" Padding="2" Margin="2" />
 
-            <Label Content="Genre" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedMovie.Genre}" Padding="10" Margin="10"/>
+            <Label Content="Genre" Padding="2" Margin="2"  Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.Genre}" Padding="2" Margin="2" />
 
-            <Label Content="AgeLimit" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedMovie.AgeLimit}" Padding="10" Margin="10"/>
+            <Label Content="AgeLimit" Padding="2" Margin="2" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.AgeLimit}" Padding="2" Margin="2" />
 
-            <Label Content="Budget" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedMovie.Budget}" Padding="10" Margin="10"/>
+            <Label Content="Budget" Padding="2" Margin="2"  Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.Budget}" Padding="2" Margin="2" />
 
-            <Label Content="DirectorID" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedMovie.DirectorID}" Padding="10" Margin="10"/>
+            <Label Content="DirectorID" Padding="2" Margin="2"  Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.DirectorID}" Padding="2" Margin="2" />
 
-            <Label Content="ProtagonistID" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedMovie.ProtagonistID}" Padding="10" Margin="10"/>
+            <Label Content="ProtagonistID" Padding="2" Margin="2"  Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.ProtagonistID}" Padding="2" Margin="2" />
 
-            <Label Content="Income" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedMovie.Income}" Padding="10" Margin="10"/>
+            <Label Content="Income" Padding="2" Margin="2" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.Income}" Padding="2" Margin="2" />
 
-            <Label Content="Music" Padding="10" Margin="10" Background="LightBlue"/>
-            <TextBox Text="{Binding SelectedMovie.Music}" Padding="10" Margin="10"/>
+            <Label Content="Music" Padding="2" Margin="2"  Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedMovie.Music}" Padding="2" Margin="2" />
         </StackPanel>
 
         <StackPanel Grid.Column="2">

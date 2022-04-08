@@ -1,6 +1,8 @@
-﻿using FTEPXW_HFT_2021221.Logic;
+﻿using FTEPXW_HFT_2021221.Endpoint.Services;
+using FTEPXW_HFT_2021221.Logic;
 using FTEPXW_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +16,12 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
     public class MovieController : ControllerBase
     {
         IMovieLogic mLog;
+        IHubContext<SignalRHub> hub;
 
-        public MovieController(IMovieLogic mLog)
+        public MovieController(IMovieLogic mLog, IHubContext<SignalRHub> hub)
         {
             this.mLog = mLog;
+            this.hub = hub;
         }
 
         // GET: /movie
@@ -39,6 +43,7 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Movie value)
         {
             mLog.Create(value);
+            this.hub.Clients.All.SendAsync("MovieCreated", value);
         }
 
         // PUT /movie
@@ -46,6 +51,7 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Movie value)
         {
             mLog.Update(value);
+            this.hub.Clients.All.SendAsync("MovieUpdated", value);
 
         }
 
@@ -53,7 +59,9 @@ namespace FTEPXW_HFT_2021221.Endpoint.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var movieToDelete = this.mLog.Read(id);
             mLog.Delete(id);
+            this.hub.Clients.All.SendAsync("MovieDeleted", movieToDelete);
         }
     }
 }
