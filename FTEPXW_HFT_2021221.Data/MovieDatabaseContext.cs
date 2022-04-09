@@ -36,7 +36,7 @@ namespace FTEPXW_HFT_2021221.Data
                 .HasOne(movie => movie.Protagonist)
                 .WithMany(protagonist => protagonist.Movies)
                 .HasForeignKey(movie => movie.ProtagonistID)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             });
             ;
             mb.Entity<Movie>(e =>
@@ -45,7 +45,7 @@ namespace FTEPXW_HFT_2021221.Data
                 .HasOne(movie => movie.Director)
                 .WithMany(director => director.Movies)
                 .HasForeignKey(movie => movie.DirectorID)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             });
             ;
             // ---------------------------------------

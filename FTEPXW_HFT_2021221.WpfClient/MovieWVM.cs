@@ -34,8 +34,8 @@ namespace FTEPXW_HFT_2021221.WpfClient
                         Genre = value.Genre,
                         AgeLimit = value.AgeLimit,
                         Income = value.Income,
-                        DirectorID = value.MovieID,
                         MovieID = value.MovieID,
+                        DirectorID = value.DirectorID,                       
                         ProtagonistID = value.ProtagonistID
                 };
                     OnPropertyChanged();
@@ -76,7 +76,7 @@ namespace FTEPXW_HFT_2021221.WpfClient
                         Genre = SelectedMovie.Genre,
                         AgeLimit = SelectedMovie.AgeLimit,
                         Income = SelectedMovie.Income,
-                        DirectorID = SelectedMovie.MovieID,
+                        DirectorID = SelectedMovie.DirectorID,
                         ProtagonistID = SelectedMovie.ProtagonistID
                     });
                 });
