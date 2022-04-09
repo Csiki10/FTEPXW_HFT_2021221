@@ -8,13 +8,13 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace FTEPXW_HFT_2021221.Endpoint
+namespace FTEPXW_HFT_2021221.JSClient
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            
+            Thread.Sleep(8000);
             CreateHostBuilder(args).Build().Run();
         }
 
