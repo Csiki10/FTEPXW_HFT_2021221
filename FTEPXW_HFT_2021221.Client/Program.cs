@@ -16,7 +16,7 @@ namespace FTEPXW_HFT_2021221.Client
             while (end == false)
             {
                 Display.Menu(); // menu
-                Console.Write("\n Choose opcion: ");
+                Console.Write("\n Choose opcion from: ");
                 int menu = int.Parse(Console.ReadLine());
             
                 if (menu == 1) // CRUD
