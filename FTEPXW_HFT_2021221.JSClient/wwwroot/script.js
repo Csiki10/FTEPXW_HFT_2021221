@@ -1,14 +1,11 @@
 ﻿let directors = [];
 let connection = null;
+
 const sleep = (ms) => {
     return new Promise((resolve, reject) => setTimeout(resolve, ms));
 };
 
 getdataSleep();
-
-;
-
-
 
 async function getdata() {
     await fetch('http://localhost:44216/director')
@@ -19,7 +16,6 @@ async function getdata() {
             display();
         });
 }
-
 
 async function getdataSleep() {
     await
@@ -72,7 +68,7 @@ function display() {
 }
 
 function remove(id) {
-    fetch('Access-Control-Allow-Origin: *' + id, {
+    fetch('http://localhost:44216/director' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null})
@@ -89,7 +85,7 @@ function create() {
     let gender = document.getElementById('directorgender').value;
     let age = document.getElementById('directorage').value;
 
-    fetch('Access-Control-Allow-Origin: *', {
+    fetch('http://localhost:44216/director', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
@@ -101,5 +97,4 @@ function create() {
             getdata();
         })
         .catch((error) => { console.error('Error:', error); });
-
 }
