@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace FTEPXW_HFT_2021221.JSClient
@@ -14,7 +13,6 @@ namespace FTEPXW_HFT_2021221.JSClient
     {
         public static void Main(string[] args)
         {
-            Thread.Sleep(8000);
             CreateHostBuilder(args).Build().Run();
         }
 

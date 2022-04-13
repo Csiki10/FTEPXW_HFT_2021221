@@ -50,11 +50,16 @@ namespace FTEPXW_HFT_2021221.Endpoint
                 .AllowCredentials()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .WithOrigins("http://localhost:41651"));
+                .WithOrigins("http://localhost:63000"));
 
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/ swagger / v1 / swagger.json","MovieDbApp.Endpoint v1"));
 
+            app.UseCors(x => x
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:27698"));
 
             app.UseRouting();
 

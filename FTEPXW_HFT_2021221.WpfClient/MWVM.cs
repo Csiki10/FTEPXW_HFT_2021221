@@ -60,7 +60,7 @@ namespace FTEPXW_HFT_2021221.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Thread.Sleep(10000);
+                Thread.Sleep(8000);
                 Directors = new RestCollection<Director>("http://localhost:44216/", "director","hub");
 
                 
