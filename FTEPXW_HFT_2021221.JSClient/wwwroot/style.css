@@ -18,20 +18,35 @@ th {
     background-color: lightblue;
 }
 
-#formdiv {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+#updateformdiv {
+display: none;
+flex-direction: column;
+margin-bottom: 10px;
 }
 
-    #formdiv label, button, input {
-        margin: 2px;
-        padding: 3px;
-    }
+#updateformdiv label, button, input {
+    margin: 2px;
+    padding: 3px;
+}
 
-    #formdiv label {
-        font-weight: bolder;
-    }
+#updateformdiv label {
+    font-weight: bolder;
+}
+
+#formdiv {
+display: flex;
+flex-direction: column;
+margin-bottom: 10px;
+}
+
+#formdiv label, button, input {
+    margin: 2px;
+    padding: 3px;
+}
+
+#formdiv label {
+    font-weight: bolder;
+}
 
 table button {
     padding: 2px;

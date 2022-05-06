@@ -1,6 +1,8 @@
 ﻿let directors = [];
 let connection = null;
 
+let diredctorIdToUpdate = -1;
+
 const sleep = (ms) => {
     return new Promise((resolve, reject) => setTimeout(resolve, ms));
 };
@@ -18,6 +20,10 @@ function setupSignalR() {
     });
 
     connection.on("DirectorDeleted", (user, message) => {
+        getdata();
+    });
+
+    connection.on("DirectorUpdated", (user, message) => {
         getdata();
     });
 
@@ -71,8 +77,17 @@ function display() {
             + t.gender + "</td><td>"
             + t.age + "</td><td>"
         + `<button type="button" onclick="remove(${t.directorID})">Delete</button>`
+        + `<button type="button" onclick="showupdate(${t.directorID})">Update</button>`
             + "</td></tr>";
     });
+}
+
+function showupdate(id) {
+    document.getElementById('directornametoupdate').value = directors.find(t => t['directorID'] == id)['name'];
+    document.getElementById('directoragetoupdate').value = directors.find(t => t['directorID'] == id)['age'];
+    document.getElementById('directorgendertoupdate').value = directors.find(t => t['directorID'] == id)['gender'];
+    document.getElementById('updateformdiv').style.display = 'flex';
+    diredctorIdToUpdate = id;
 }
 
 function remove(id) {
@@ -99,6 +114,26 @@ function create() {
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
             { ID: id, Name: name, Age: age, Gender: gender, }),
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
+}
+
+function update() {
+    document.getElementById('updateformdiv').style.display = 'none';
+    let name = document.getElementById('directornametoupdate').value;
+    let age = document.getElementById('directoragetoupdate').value;
+    let gender = document.getElementById('directorgendertoupdate').value;
+
+    fetch('http://localhost:44216/director', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            { DirectorID: diredctorIdToUpdate, Name: name, Age: age, Gender: gender, }),
     })
         .then(response => response)
         .then(data => {

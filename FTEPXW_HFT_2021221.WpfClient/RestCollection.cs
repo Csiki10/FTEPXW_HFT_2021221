@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -18,6 +19,7 @@ namespace FTEPXW_HFT_2021221.WpfClient
 
         public RestService(string baseurl, string pingableEndpoint = "director")
         {
+            //Thread.Sleep(5000);
             bool isOk = false;
             do
             {
